@@ -31,6 +31,8 @@ const todoSlice = createSlice({
         toggleComplete: (state, action: PayloadAction<string>) => {
             const todo = state.todos.find((todo) => todo.id === action.payload)
             todo!.isCompleted = !todo?.isCompleted
+            const filteredTodo = state.filteredTodos.find((todo) => todo.id === action.payload)
+            filteredTodo!.isCompleted = !filteredTodo?.isCompleted
         },
         updateTodo: (state, action: PayloadAction<TTodo>) => {
             const todo = state.todos.find((todo) => todo.id === action.payload.id)
