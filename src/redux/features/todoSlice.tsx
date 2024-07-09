@@ -29,10 +29,18 @@ const todoSlice = createSlice({
             state.todos = filteredTodos
         },
         toggleComplete: (state, action: PayloadAction<string>) => {
-            const todo = state.todos.find((todo) => todo.id === action.payload)
-            todo!.isCompleted = !todo?.isCompleted
-            const filteredTodo = state.filteredTodos.find((todo) => todo.id === action.payload)
-            filteredTodo!.isCompleted = !filteredTodo?.isCompleted
+            if (state.filteredTodos.length === 0) {
+                const todo = state.todos.find((todo) => todo.id === action.payload)
+                todo!.isCompleted = !todo?.isCompleted
+                state.todos.sort((a, b) => Number(a.isCompleted) - Number(b.isCompleted));
+
+            } else {
+                const filteredTodo = state.filteredTodos.find((todo) => todo.id === action.payload)
+                filteredTodo!.isCompleted = !filteredTodo?.isCompleted
+                state.filteredTodos.sort((a, b) => Number(a.isCompleted) - Number(b.isCompleted));
+
+            }
+
         },
         updateTodo: (state, action: PayloadAction<TTodo>) => {
             const todo = state.todos.find((todo) => todo.id === action.payload.id)

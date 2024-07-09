@@ -17,7 +17,7 @@ const TodoCard = ({ todo }: TTodoCardProps) => {
 
     return (
         <div className="flex justify-between items-center bg-white p-2 rounded-md border" >
-            <input onChange={handleToggle} type="checkbox" name="complete" id="complete" />
+            <input onChange={handleToggle} checked={todo.isCompleted} type="checkbox" name="complete" id="complete" />
             <h1 className="font-semibold">{todo.task}</h1>
             {
                 todo.isCompleted ? <p className="text-green-500">Done</p> : <p className="text-red-500">Pending</p>
