@@ -10,13 +10,11 @@ export type TTodo = {
 
 type TInitialState = {
     todos: TTodo[],
-    todo?: TTodo,
     filteredTodos: TTodo[]
 }
 
 const initialState: TInitialState = {
     todos: [],
-    todo: undefined,
     filteredTodos: []
 }
 const todoSlice = createSlice({
@@ -34,10 +32,6 @@ const todoSlice = createSlice({
             const todo = state.todos.find((todo) => todo.id === action.payload)
             todo!.isCompleted = !todo?.isCompleted
         },
-        getTodo: (state, action: PayloadAction<string>) => {
-            const todo = state.todos.find((todo) => todo.id === action.payload)
-            state.todo = todo
-        },
         updateTodo: (state, action: PayloadAction<TTodo>) => {
             const todo = state.todos.find((todo) => todo.id === action.payload.id)
             todo!.description = action.payload.description
@@ -50,6 +44,6 @@ const todoSlice = createSlice({
     }
 })
 
-export const { addTodo, removeTodo, toggleComplete, getTodo, updateTodo, filterTodo } = todoSlice.actions
+export const { addTodo, removeTodo, toggleComplete, updateTodo, filterTodo } = todoSlice.actions
 
 export default todoSlice.reducer
