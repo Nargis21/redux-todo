@@ -1,12 +1,11 @@
-import { Button } from "./components/ui/button"
+import Todo from "./pages/Todo"
 
 
 function App() {
 
   return (
     <div>
-      <h1>Redux Todo</h1>
-      <Button>Button</Button>
+      <Todo />
     </div>
   )
 }
