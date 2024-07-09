@@ -2,7 +2,7 @@ import { Button } from "../ui/button";
 
 const TodoCard = () => {
     return (
-        <div className="flex justify-between items-center bg-white p-3 rounded-md border" >
+        <div className="flex justify-between items-center bg-white p-2 rounded-md border" >
             <input type="checkbox" name="" id="" />
             <h1 className="font-semibold">Todo Title</h1>
             <h1>Time</h1>
