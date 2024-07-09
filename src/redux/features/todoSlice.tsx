@@ -9,11 +9,13 @@ export type TTodo = {
 }
 
 type TInitialState = {
-    todos: TTodo[]
+    todos: TTodo[],
+    todo?: TTodo
 }
 
 const initialState: TInitialState = {
-    todos: []
+    todos: [],
+    todo: undefined
 }
 const todoSlice = createSlice({
     name: "todo",
@@ -29,10 +31,14 @@ const todoSlice = createSlice({
         toggleComplete: (state, action: PayloadAction<string>) => {
             const todo = state.todos.find((todo) => todo.id === action.payload)
             todo!.isCompleted = !todo?.isCompleted
+        },
+        getTodo: (state, action: PayloadAction<string>) => {
+            const todo = state.todos.find((todo) => todo.id === action.payload)
+            state.todo = todo
         }
     }
 })
 
-export const { addTodo, removeTodo, toggleComplete } = todoSlice.actions
+export const { addTodo, removeTodo, toggleComplete, getTodo } = todoSlice.actions
 
 export default todoSlice.reducer
