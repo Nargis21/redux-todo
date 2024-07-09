@@ -10,12 +10,14 @@ export type TTodo = {
 
 type TInitialState = {
     todos: TTodo[],
-    todo?: TTodo
+    todo?: TTodo,
+    filteredTodos: TTodo[]
 }
 
 const initialState: TInitialState = {
     todos: [],
-    todo: undefined
+    todo: undefined,
+    filteredTodos: []
 }
 const todoSlice = createSlice({
     name: "todo",
@@ -41,10 +43,13 @@ const todoSlice = createSlice({
             todo!.description = action.payload.description
             todo!.task = action.payload.task
             todo!.priority = action.payload.priority
+        },
+        filterTodo: (state, action: PayloadAction<string>) => {
+            state.filteredTodos = state.todos.filter((todo) => todo.priority === action.payload)!
         }
     }
 })
 
-export const { addTodo, removeTodo, toggleComplete, getTodo, updateTodo } = todoSlice.actions
+export const { addTodo, removeTodo, toggleComplete, getTodo, updateTodo, filterTodo } = todoSlice.actions
 
 export default todoSlice.reducer

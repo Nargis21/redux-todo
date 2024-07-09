@@ -1,9 +1,15 @@
-import { useState } from "react";
 import { Button } from "../ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSeparator, DropdownMenuTrigger } from "../ui/dropdown-menu";
+import { useAppDispatch } from "@/redux/hook";
+import { filterTodo } from "@/redux/features/todoSlice";
 
 const TodoFilter = () => {
-    const [position, setPosition] = useState("bottom")
+
+    const dispatch = useAppDispatch()
+
+    const handleFilter = (e: string) => {
+        dispatch(filterTodo(e))
+    }
 
     return (
         <DropdownMenu>
@@ -11,12 +17,12 @@ const TodoFilter = () => {
                 <Button className="bg-primary-gradient font-semibold">Filter</Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56">
-                <DropdownMenuLabel>filter by Priority</DropdownMenuLabel>
+                <DropdownMenuLabel>Filter by Priority</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
-                    <DropdownMenuRadioItem value="high">High</DropdownMenuRadioItem>
-                    <DropdownMenuRadioItem value="medium">Medium</DropdownMenuRadioItem>
-                    <DropdownMenuRadioItem value="low">Low</DropdownMenuRadioItem>
+                <DropdownMenuRadioGroup onValueChange={(e) => handleFilter(e)}>
+                    <DropdownMenuRadioItem value="High">High</DropdownMenuRadioItem>
+                    <DropdownMenuRadioItem value="Medium">Medium</DropdownMenuRadioItem>
+                    <DropdownMenuRadioItem value="Low">Low</DropdownMenuRadioItem>
                 </DropdownMenuRadioGroup>
             </DropdownMenuContent>
         </DropdownMenu>
