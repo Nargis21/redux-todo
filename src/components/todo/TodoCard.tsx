@@ -21,6 +21,7 @@ const TodoCard = ({ todo }: TTodoCardProps) => {
             {
                 todo.isCompleted ? <p className="text-green-500">Done</p> : <p className="text-red-500">Pending</p>
             }
+            <h1 className="text-semibold text-yellow-500">{todo.priority}</h1>
             <h1>{todo.description}</h1>
             <div className="space-x-3">
                 <Button onClick={() => dispatch(removeTodo(todo.id))} className="bg-red-500">
