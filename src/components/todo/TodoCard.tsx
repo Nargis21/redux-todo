@@ -1,12 +1,16 @@
+import { TTodo } from "@/redux/features/todoSlice";
 import { Button } from "../ui/button";
 
-const TodoCard = () => {
+type TTodoCardProps = {
+    todo: TTodo
+}
+
+const TodoCard = ({ todo }: TTodoCardProps) => {
     return (
         <div className="flex justify-between items-center bg-white p-2 rounded-md border" >
             <input type="checkbox" name="" id="" />
-            <h1 className="font-semibold">Todo Title</h1>
-            <h1>Time</h1>
-            <h1>Description</h1>
+            <h1 className="font-semibold">{todo.task}</h1>
+            <h1>{todo.description}</h1>
             <div className="space-x-3">
                 <Button className="bg-red-500">
                     <svg className="size-4" data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
