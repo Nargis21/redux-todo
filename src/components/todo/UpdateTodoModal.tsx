@@ -5,7 +5,7 @@ import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { DialogClose } from "@radix-ui/react-dialog";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
-import { addTodo, getTodo } from "@/redux/features/todoSlice";
+import { getTodo, updateTodo } from "@/redux/features/todoSlice";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 
 const UpdateTodoModal = ({ id }: { id: string }) => {
@@ -20,7 +20,7 @@ const UpdateTodoModal = ({ id }: { id: string }) => {
 
     const onSubmit = (e: FormEvent) => {
         e.preventDefault()
-        dispatch(addTodo({ id, task, priority, description }))
+        dispatch(updateTodo({ id, task, priority, description }))
     }
     return (
 
