@@ -15,19 +15,23 @@ const TodoContainer = () => {
                 <TodoFilter />
             </div>
             <div className="bg-primary-gradient h-full w-full p-2 rounded-xl  ">
-                <div className="p-5 space-y-3 bg-white rounded-lg">
-                    {
-                        filteredTodos.length === 0
-                            ?
-                            (todos.map((todo) => <TodoCard todo={todo} />))
-                            :
-                            (filteredTodos.map((todo) => <TodoCard todo={todo} />))
-                    }
-                </div>
-                {/* <div className="flex justify-center items-center bg-white p-5 rounded-md">
-                    <h1 className="font-bold">You have no pending task!</h1>
-                </div> */}
+                {todos.length === 0 ?
+                    <div className="flex justify-center items-center bg-white p-5 rounded-md">
+                        <h1 className="font-bold">You have no pending task!</h1>
+                    </div>
+                    :
+                    <div className="p-5 space-y-3 bg-white rounded-lg">
+                        {
+                            filteredTodos.length === 0
+                                ?
+                                (todos.map((todo) => <TodoCard todo={todo} />))
+                                :
+                                (filteredTodos.map((todo) => <TodoCard todo={todo} />))
+                        }
+                    </div>
 
+
+                }
             </div>
         </div>
     );
